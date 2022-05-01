@@ -1,4 +1,3 @@
-from ctypes.wintypes import BOOL
 from pathlib import Path
 
 import environ
