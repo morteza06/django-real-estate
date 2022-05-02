@@ -102,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'ir/Asia'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
@@ -115,8 +115,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIR = []
-MEDIA_URL = "/mediafiels/"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
+MEDIA_URL = 'mediafiles/'
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
