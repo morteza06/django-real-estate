@@ -9,6 +9,7 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_HOST_EMAIL = "mgahangir2006@gmail.com"
 DOMAIN = env("DOMAIN")
 SITE_NAME = "Real Estate"
+DEFAULT_FROM_EMAIL = "mgahangir2006@gmail.com"
 
 DATABASES = {
     "default": {
