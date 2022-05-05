@@ -1,5 +1,5 @@
 from django_countries.serializer_fields import CountryField
-from django_countries.serializers import CountryFieldMixin 
+from django_countries.serializers import CountryFieldMixin
 from rest_framework import serializers
 from .models import Property, PropertyViews
 
@@ -10,17 +10,18 @@ class PropertySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Property
-        fields = ["id", "user", "title", "slug", "ref_code", "description", "country", "city", 
-                "postal_code", "street_address", "property_number", "price", "tax", "plot_area",
-                "total_floors", "bedrooms", "bathrooms", "advert_type", "property_type", "cover_title", 
-                "photo1", "photo2", "photo3", "photo4", "published_status", "views"]
+        fields = ["id", "user", "title", "slug", "ref_code", "description", "country", "city",
+                  "postal_code", "street_address", "property_number", "price", "tax", "plot_area",
+                  "final_property_price",
+                  "total_floors", "bedrooms", "bathrooms", "advert_type", "property_type", "cover_title",
+                  "photo1", "photo2", "photo3", "photo4", "published_status", "views"]
 
     def get_user(self, obj):
-        return obj.user.username 
+        return obj.user.username
 
 class PropertyCreateSerializer(serializers.ModelSerializer):
     country = CountryField(name_only=True)
-    
+
     class Meta:
         model = Property
         exclude = ["updated_at", "pkid"]

@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, unique=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('phone_number', phonenumber_field.modelfields.PhoneNumberField(default='+34236454353', max_length=30, region=None, verbose_name='Phone Number')),
+                ('phone_number', phonenumber_field.modelfields.PhoneNumberField(default='+12125552368', max_length=30, region=None, verbose_name='Phone Number')),
                 ('about_me', models.TextField(default='say something about yourself', verbose_name='About me')),
                 ('License', models.CharField(blank=True, max_length=20, null=True, verbose_name='Real Estate license')),
                 ('profile_photo', models.ImageField(default='/profile_default.png', upload_to='', verbose_name='Profile Photo')),

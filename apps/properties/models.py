@@ -1,11 +1,5 @@
-from email.policy import default
-from enum import unique
-from mmap import mmap
 import random
-from re import L
 import string
-from tabnanny import verbose
-from tkinter.tix import Tree
 
 from autoslug import AutoSlugField
 from django.contrib.auth import get_user_model
@@ -38,9 +32,8 @@ class Property(TimeStampedUUIDModel):
         WAREHOUSE = "Warehouse", _("Warehouse")
         COMMERCIAL = "Commercial", _("Commercial")
         OTHER = "Other", _("Other")
-        
     user = models.ForeignKey(User, verbose_name=_("Agent,Seller or Buyer"), related_name="agent_buyer",
-                             on_delete=models.DO_NOTHING),
+                             on_delete=models.DO_NOTHING, )
     title = models.CharField(verbose_name=_("Property Title"), max_length=250)
     slug = AutoSlugField(populate_from="title", unique=True, always_update=True)
     ref_code = models.CharField(verbose_name=_("Property Reference Code"),
@@ -50,16 +43,20 @@ class Property(TimeStampedUUIDModel):
     city = models.CharField(verbose_name=_("City"), max_length=100, default="Rasht")
     postal_code = models.CharField(verbose_name=_("Postal Code"), max_length=100, default="140")
     street_address = models.CharField(verbose_name=_("Street Address"), max_length=150, default="Razi Avenue")
-    property_number = models.IntegerField(verbose_name=_("Property Number"), validators=[MinValueValidator(1)], default=112)
+    property_number = models.IntegerField(verbose_name=_("Property Number"), validators=[MinValueValidator(1)],
+                                          default=112)
     price = models.DecimalField(verbose_name=_("Price"), max_digits=8, decimal_places=2, default=0.0)
-    tax = models.DecimalField(verbose_name=_("Property Tax"), max_digits=6, decimal_places=2, default=0.15, 
+    tax = models.DecimalField(verbose_name=_("Property Tax"), max_digits=6, decimal_places=2, default=0.15,
                               help_text="15% property tax charged",)
+    # "final_property_price" is property in data models
     plot_area = models.DecimalField(verbose_name=_("Ploat Area(m^2)"), max_digits=8, decimal_places=2, default=0.0)
     total_floors = models.IntegerField(verbose_name=_("Number of floors"), default=0)
     bedrooms = models.IntegerField(verbose_name=_("Bedrooms"), default=1)
     bathrooms = models.DecimalField(verbose_name=_("Bathrooms"), max_digits=4, decimal_places=2, default=1.0)
-    advert_type = models.CharField(verbose_name=_("Advert Type"), max_length=50, choices=AdvertType.choices, default=AdvertType.FOR_SALE,)
-    property_type = models.CharField(verbose_name=_("Property type"), max_length=50, choices=PropertyType.choices, default=PropertyType.OTHER,)
+    advert_type = models.CharField(verbose_name=_("Advert Type"), max_length=50, choices=AdvertType.choices,
+                                   default=AdvertType.FOR_SALE,)
+    property_type = models.CharField(verbose_name=_("Property type"), max_length=50, choices=PropertyType.choices,
+                                     default=PropertyType.OTHER,)
     cover_title = models.ImageField(verbose_name=_("Main Photo"), default="/house_sample.jpg", null=True, blank=True)
     photo1 = models.ImageField(default="/interior_sample1.jpg", null=True, blank=True)
     photo2 = models.ImageField(default="/interior_sample2.jpg", null=True, blank=True)
@@ -67,10 +64,10 @@ class Property(TimeStampedUUIDModel):
     photo4 = models.ImageField(default="/interior_sample4.jpg", null=True, blank=True)
     published_status = models.BooleanField(verbose_name=_("Published Status"), default=False)
     views = models.IntegerField(verbose_name=_("Total Views"), default=0)
-    
-    object = models.Manager()
+    #
+    objects = models.Manager()
     published = PropertyPublishManager()
-    
+    #
     def __str__(self):
         return self.title
     
@@ -80,7 +77,7 @@ class Property(TimeStampedUUIDModel):
         
     def save(self, *args, **kwargs):
         self.title = str.title(self.title)
-        self.description = str.description(self.description)
+        self.description = str.capitalize(self.description)
         self.ref_code = "".join(random.choices(string.ascii_uppercase + string.digits, k=10))
         super(Property, self).save(*args, **kwargs)
         
@@ -91,14 +88,14 @@ class Property(TimeStampedUUIDModel):
         tax_amount = round(tax_percentage * property_price, 2)
         price_after_tax = float(round(property_price + tax_amount, 2))
         return price_after_tax
-    
+
 class PropertyViews(TimeStampedUUIDModel):
     ip = models.CharField(verbose_name=_("IP Address"), max_length=250)
     property = models.ForeignKey(Property, related_name="property_views", on_delete=models.CASCADE)
     
     def __str__(self):
         return (
-            f"Total views on - {self.property.tile} is - {self.property.views} view(s)"
+            f"Total views on - {self.property.title} is - {self.property.views} view(s)"
         )
     
     class Meta:
