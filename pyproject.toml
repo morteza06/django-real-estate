@@ -1,0 +1,6 @@
+[tool.blank]
+extend-exclude = ''
+/(
+    \ env
+)/
+'''
