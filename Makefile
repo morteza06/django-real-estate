@@ -25,7 +25,7 @@ makemigrations:
 superuser:
 	docker compose exec api python3 manage.py createsuperuser
 collectstatic:
-	docker compose exec api python3 collectstatic --no-input--clear
+	docker compose exec api python3 manage.py collectstatic --no-input--clear
 
 down-v:
 	docker compose down -v
@@ -48,6 +48,9 @@ flake8:
 	docker compose exec api flake8 .
 
 black-check:
+	docker compose exec api black --check --exclude=migrations .
+
+black-diff:
 	docker compose exec api black --diff --exclude=migrations .
 
 black:
