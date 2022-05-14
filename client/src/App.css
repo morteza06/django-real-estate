@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
+@import "antd/dist/antd.css";
+
+body{
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+}
+.margin--top{
+  margin-top: 80px;
+}
+.spinner{
+  margin: 80px 0;
+  margin-bottom: 20px ;
+  padding: 30px 50px;
+  text-align: rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+.spinner{
+  background: rgba(255,255,255,0.08);
+}
+.alert-margin--top{
+  margin-top: 100px;
+}
+.fluid-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 15px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ant-layout {
+  background: #fff !important;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header .ant-anchor{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.header .ant-anchor-ink {
+  display: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header .ant-anchor-link{
+  padding: 0 20px;
+  line-height: 1.4;
+  position:relative;
+}
+.header .ant-anchor-link:before,
+.header .ant-anchor-link:after {
+  content: "";
+  background: #1890ff;
+  width: 1px;
 }
