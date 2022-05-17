@@ -1,11 +1,11 @@
-FROM python:3.8.13-bullseye
+FROM python:3.9-alpine3.15
 
 ENV APP_HOME=/app 
 RUN mkdir $APP_HOME
 RUN mkdir $APP_HOME/staticfiles
 WORKDIR $APP_HOME
 
-LABEL maitainer='magahangir2006@gmail.com'
+LABEL maintainer='magahangir2006@gmail.com'
 LABEL youtube="https://www.youtube.com/c/gahangir2006"
 LABEL description="Development image for Real Estate Project"
 
@@ -35,7 +35,6 @@ COPY ./docker/local/django/start  /start
 RUN sed -i 's/\r$//g'  /start
 RUN chmod +x /start
 
-
 COPY ./docker/local/django/celery/worker/start  /start-celeryworker
 RUN sed -i 's/\r$//g'  /start-celeryworker
 RUN chmod +x /start-celeryworker
@@ -43,7 +42,5 @@ RUN chmod +x /start-celeryworker
 COPY ./docker/local/django/celery/flower/start  /start-flower
 RUN sed -i 's/\r$//g'  /start-flower
 RUN chmod +x /start-flower
-
- 
 
 ENTRYPOINT [ "/entrypoint "]
