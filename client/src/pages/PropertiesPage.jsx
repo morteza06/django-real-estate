@@ -1,10 +1,11 @@
 import React,{useEffect} from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
-import Property from '../components/Property';
 import { getProperties,reset } from '../features/properties/propertySlice.js'
+import Spinner from '../components/Spinner';
+import Property from '../components/Property';
+import Title from "../components/Title";
 
 
 const PropertiesPage = () => {
@@ -24,6 +25,7 @@ const PropertiesPage = () => {
   }
   return (
     <>
+        <Title title="Our Properties Catalog"/>
         <Container>
             <Row>
                 <Col className="mg-top text-center">
