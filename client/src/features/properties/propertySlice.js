@@ -17,7 +17,8 @@ async(_, thunkAPI) => {
         try {
             return await propertyAPIService.getProperties();
         }catch (error){
-            const message = (error.response && error.response.data && error.response.data.message ||
+            const message = (error.response && error.response.data && 
+                            error.response.data.message ||
                              error.message || error.toString());
 
             return thunkAPI.rejectWithValue(message);
