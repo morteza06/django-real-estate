@@ -1,8 +1,8 @@
-import React from 'react';
-import { Badge, Button, Card, Row } from 'react-bootstrap';
-import { FaBed, FaShower } from 'react-icons/fa';
-import { GiStairs } from 'react-icons/gi';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Badge, Button, Card, Row } from "react-bootstrap";
+import { FaBed, FaShower } from "react-icons/fa";
+import { GiStairs } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 const Property = ({property}) => {
   function  numberWithCommas(x){
@@ -11,10 +11,12 @@ const Property = ({property}) => {
 
   return (
       <Card style={{width: "18rem"}}>
-          <Badge bg="success" className="position-absolute top-0 start-100 translate-middle rounded-pill">
+          <Badge 
+            bg="success" 
+            className="position-absolute top-0 start-100 translate-middle rounded-pill">
               {property.advert_type}
           </Badge>
-          <Link to={'/property/${property.slug}'}>
+          <Link to={"/property/${property.slug}"}>
               <Card.Img src={property.cover_photo} variant="top"/>
           </Link>
           <Card.Title calssName="property-price">
@@ -42,7 +44,7 @@ const Property = ({property}) => {
                   </Col>
               </Row>
               <hr />
-              <Link to={'/property/$/{property.slug}'}>
+              <Link to={"/property/$/{property.slug}"}>
                   <Button variant="primary">Get More Info &gt; &gt;</Button>
               </Link>
           </Card.Body>

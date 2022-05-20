@@ -1,9 +1,9 @@
-import React from 'react'
-import { Button, Container } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import React from "react";
+import { Button, Container } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import Title from "../components/Title";
 
-function HomePage() {
+const HomePage = () => {
   return (
     <>
     <Title />

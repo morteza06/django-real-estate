@@ -1,6 +1,6 @@
-import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { FaHeartBoroken,FaSadTear } from 'react-icons/fa';
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { FaHeartBoroken,FaSadTear } from "react-icons/fa";
 
 const NotFound = () => {
   return (
@@ -16,4 +16,4 @@ const NotFound = () => {
   )
 }
 
-export default NotFound
+export default NotFound;

@@ -1,13 +1,13 @@
- import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
- import propertyAPIService from './propertyAPIService';
+ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+ import propertyAPIService from "./propertyAPIService";
 
  const initialState = {
-     properties:[],
-     property:{},
-     isError:false,
-     isLoading:false,
-     isSuccess:false,
-     message:"",
+     properties: [],
+     property: {},
+     isError: false,
+     isLoading: false,
+     isSuccess: false,
+     message: "",
 };
 
 //get all properties
@@ -23,11 +23,11 @@ async(_, thunkAPI) => {
 
             return thunkAPI.rejectWithValue(message);
         }
-     }
+     },
 );
 
 export const propertySlice = createSlice({
-    name: 'property',
+    name: "property",
     initialState,
     reducers: {
         reset: (state) => initialState,

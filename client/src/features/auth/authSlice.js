@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import authService from './authService';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import authService from "./authService";
 
 const user = JSON.parse(localStorage.getItem("user"))
 
@@ -23,7 +23,7 @@ export const register = createAsyncThunk(
 
         return thunkAPI.rejectWithValue(message);
         }
-    }
+    },
 );
     
 export const login = createAsyncThunk(
@@ -38,13 +38,13 @@ export const login = createAsyncThunk(
 
         return thunkAPI.rejectWithValue(message);
         }
-    }
+    },
 );
 export const logout = createAsyncThunk(
     "auth/logout", 
     async () => {
         authService.logout();
-    }
+    },
 );
 
 export const activate = createAsyncThunk(
@@ -59,7 +59,7 @@ export const activate = createAsyncThunk(
 
         return thunkAPI.rejectWithValue(message);
         }
-    }
+    },
 );
 
 export const authSlice = createSlice({
